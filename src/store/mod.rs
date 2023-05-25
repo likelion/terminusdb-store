@@ -698,6 +698,10 @@ impl Layer for StoreLayer {
         self.layer.triples_o(object)
     }
 
+    fn triples_after_o(&self, object: u64) -> Box<dyn Iterator<Item = IdTriple> + Send> {
+        self.layer.triples_after_o(object)
+    }
+
     fn clone_boxed(&self) -> Box<dyn Layer> {
         Box::new(self.clone())
     }

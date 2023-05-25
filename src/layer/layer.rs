@@ -114,6 +114,8 @@ pub trait Layer: Send + Sync {
 
     fn triples_o(&self, object: u64) -> Box<dyn Iterator<Item = IdTriple> + Send>;
 
+    fn triples_after_o(&self, object: u64) -> Box<dyn Iterator<Item = IdTriple> + Send>;
+
     /// Convert all known strings in the given string triple to ids.
     fn value_triple_to_partially_resolved(&self, triple: ValueTriple) -> PartiallyResolvedTriple {
         PartiallyResolvedTriple {

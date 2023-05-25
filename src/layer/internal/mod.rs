@@ -872,6 +872,10 @@ impl Layer for InternalLayer {
         )
     }
 
+    fn triples_after_o(&self, object: u64) -> Box<dyn Iterator<Item = IdTriple> + Send> {
+        Box::new(InternalTripleObjectIterator::from_layer(self).seek_object(object))
+    }
+
     fn single_triple_sp(&self, subject: u64, predicate: u64) -> Option<IdTriple> {
         // is subject/predicate in the positives? we're in luck
         if let Some(pos) = sp_o_position(
